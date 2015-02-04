@@ -1,0 +1,17 @@
+{
+    "contents" : "\n\nlibrary(foreign);library(gdata);library(RGtk2);library(ppcor);\nlibrary(nlme);library(rtiff);library(psych);library(lavaan);library(MASS)\n\ncampbell <- read.spss(\"C:/Users/admin/Dropbox/APIM/campbell.sav\", to.data.frame = T)\n",
+    "created" : 1421249844592.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "562910893",
+    "id" : "F5C78AAF",
+    "lastKnownWriteTime" : 1421247344,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

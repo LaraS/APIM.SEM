@@ -1,0 +1,16 @@
+{
+    "contents" : "\nshinyServer(function(input, output, session) {\n  \n  ####### New analysis / reload button ########\n  output$reload <- renderUI({\n    if (input$newanalysis > 0) {\n      tags$script(\"window.location.reload();\")\n    }\n  })\n  \n  ######## Reactive Data Input ########\n  dataInput <- reactive({\n    inFile <- input$file1\n    exdata <- input$exdata\n    \n    if(is.null(inFile)){      \n      if(exdata==\"\"){\n        return(NULL)        \n      }else if(exdata==\"campbell\"){\n        return(campbell)  \n      }      \n    }\n    \n    if(!is.null(inFile)){\n      \n     # Determine document format;\n     ptn <- \"\\\\.[[:alnum:]]{1,5}$\"\n     suf <- tolower(regmatches(inFile$name, regexpr(ptn, inFile$name)))\n      \n      if(suf == \".csv\"){\n        return(read.csv(inFile$datapath))  \n      }else if(suf == \".txt\"){\n        return(read.table(inFile$datapath))    \n      }else if(suf == \".sav\"){\n        return(read.spss(inFile$datapath, to.data.frame=TRUE,\n                         use.value.labels=input$vallabels))\n      }else if(suf == \".xpt\"){\n        return(read.xport(inFile$datapath))\n      }  \n    }  \n  })\n  \n  ###### Reactive Run Model #########\n  model <- reactive({\n        \n    ## arguments for apim_sem()\n    xname <- input$xname\n    yname <- input$yname \n    namex1 <- input$namex1\n    namex2 <- input$namex2\n    namey1 <- input$namey1\n    namey2 <- input$namey2\n    lab1 <- input$lab1\n    lab2 <- input$lab2\n    labs1 <- input$labs1\n    labs2 <- input$labs2\n    dname <- input$dname\n    data <- dataInput()\n              \n    tryCatch(\n      apim_sem(xname=xname,\n               yname=yname, \n               namex1=namex1, \n               namex2=namex2, \n               namey1=namey1, \n               namey2=namey2,\n               lab1=lab1, \n               lab2=lab2, \n               labs1 = labs1, \n               labs2=labs2,\n               dname=dname, \n               data=data, \n               relx = .8, \n               rely = .8, \n               alpha = .05, \n               dvarr=TRUE, \n               fix1k = TRUE, \n               boottrials=50L, \n               fix2k = TRUE)\n    )\n  })\n\n  \n  \n  \n  ###### Output Data Table #########  \n  output$mytable1 = renderDataTable({ \n    d <- dataInput()\n    dprint <- format(d, digits=3)\n    dprint\n  })\n\n  #### Main Output ###########    \n  output$summary = renderPrint({\n    \n    m1 <- model()\n    print(m1)  \n  })\n\n  #### Table Output ###########    \n  output$tableoutput = renderPrint({\n    \n    m1 <- model()\n    printTables(m1)  \n  })\n  \n  \n\n})",
+    "created" : 1421250325564.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "460248441",
+    "id" : "2A360328",
+    "lastKnownWriteTime" : 1421247514,
+    "path" : "C:/Users/admin/Dropbox/APIM/APIM.SEM/APIM.SEM/inst/server.R",
+    "project_path" : "inst/server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,22 @@
+Package: APIM.SEM
+Title: APIM.SEM
+Version: 0.1-1
+Author: Lara Stas <lara.stas@ugent.be>
+Maintainer: Lara Stas <lara.stas@ugent.be>
+Description: APIM
+Depends:
+    R (>= 2.14.1),
+    lavaan (>= 0.5-16),
+	shiny,
+    foreign,
+	gdata,
+	ppcor,
+	rtiff,
+	psych,
+	MASS
+Imports:
+    methods
+License: GPL (>= 2)
+LazyLoad: yes
+LazyData: yes
+Packaged: 2015-01-01

@@ -1,0 +1,16 @@
+{
+    "contents" : "\n\nres <- apim_sem(dname = \"gender\", xname = \"neurotocism\", yname=\"distress\", \n            namex1 = \"mneuro\", namex2 = \"fneuro\", namey1 = \"mdistr\", \n            namey2 = \"fdistr\",labs1 = \"husband\", labs2 = \"wive\", \n            lab1 = \"husbands\", lab2 = \"wives\",data = campbell)\n\nres\nprintTables(res)\n\n# citation()\n# figures(temploc= \"H:/home/Doctoraat/Studie 2 - APIM/templates/\")\n\n\n",
+    "created" : 1421243432995.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2142093346",
+    "id" : "EA5AD31",
+    "lastKnownWriteTime" : 1421243679,
+    "path" : "C:/Users/admin/Dropbox/workspace/APIM.SEM/tests/tests.R",
+    "project_path" : "tests/tests.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
